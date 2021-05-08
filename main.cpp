@@ -1,33 +1,29 @@
 #include "serialize_deserialize.h"
 
-
 int main()
 {
-
-    
-    
     const std::string path = "Person.txt";
     Person firstPerson("John", 31, "ab02222");
     Person secondPerson("Rafo", 27, "aa11111");
     Person thirdPerson("James", 27, "cc696969");
     Person fourthPerson("Malena", 22, "dd76666");
   
-    
     std::vector<Person> allPersons;
     allPersons.push_back(firstPerson);
     allPersons.push_back(secondPerson);
     allPersons.push_back(thirdPerson);
     allPersons.push_back(fourthPerson);
 
-//    std::ofstream outFile(path);
-//    std::pair<int, Person>* myType = new  std::pair<int, Person>[allPersons.size()];
-//    for(int i = 0; i < allPersons.size(); ++i)
-//    {
-//        myType[i].first = allPersons[i].getPrimaryId();
-//        myType[i].second = allPersons[i];
-//        outFile << myType[i].first;
-//        outFile << myType[i].second;
-//    }
+    std::ofstream outFile(path);
+    std::pair<int, Person>* myType = new  std::pair<int, Person>[allPersons.size()];
+    for(int i = 0; i < allPersons.size(); ++i)
+    {
+        myType[i].first = allPersons[i].getPrimaryId();
+        myType[i].second = allPersons[i];
+        outFile << myType[i].first;
+        outFile << myType[i].second;
+    }
+    delete[] myType;
 
     std::ifstream inFile(path);
     
@@ -43,7 +39,6 @@ int main()
     Person* tmp = new Person[allPersons.size()];
     for(int i = 0; i < input.size() - 1; ++i)
     {
-        //std::cout << input[i];
         if(input[i] == "Name:")
         {
             tmp[i].setName(input[i + 1]);
@@ -56,8 +51,8 @@ int main()
         {
             tmp[i].setSocialId(input[i + 1]);
         }
-  }
-    
+    }
+    delete[] tmp;
     
     return 0;
 }

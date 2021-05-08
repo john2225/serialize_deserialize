@@ -2,17 +2,14 @@
 #define SERIALIZE_H
 #include <iostream>
 #include <fstream>
-#include <memory>
 #include <vector>
 #include <sstream>
-
-
 
 class Person
 {
 public:
     Person();
-    Person(std::string name, int age, std::string social_id);
+    Person(const std::string& name, int age, const std::string& social_id);
     ~Person(){}
 
 public:
@@ -39,6 +36,5 @@ private:
 };
 
 std::vector<std::string> splitText(const std::string& str);
-
 
 #endif /* SERIALIZE_H */

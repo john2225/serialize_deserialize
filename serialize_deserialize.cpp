@@ -1,6 +1,5 @@
 #include "serialize_deserialize.h"
 
-
 int Person::primary_id = 0;
 
 Person::Person()
@@ -10,7 +9,7 @@ Person::Person()
 {
 }
 
-Person::Person(std::string name, int age, std::string social_id)
+Person::Person(const std::string name, int age, const std::string& social_id)
     : m_name{name},
     m_age{age},
     m_social_id{social_id}
